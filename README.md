@@ -19,7 +19,7 @@ faq-chatbot-ai-fullstack/
 ├── app.db                  # SQLite database (generated after first run)
 ├── .env                    # Environment variables (see below)
 ├── requirements.txt        # Python dependencies for the backend
-└── my-react-app/           # React frontend application
+└── react-app/           # React frontend application
     ├── public/
     └── src/
         ├── components/     # React components (Auth, Chat, FileList, Main, Sidebar)
