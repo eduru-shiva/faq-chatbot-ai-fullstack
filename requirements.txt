@@ -1,0 +1,13 @@
+fastapi
+uvicorn
+python-dotenv
+SQLAlchemy
+python-jose[cryptography]
+pydantic
+PyPDF2
+python-docx
+google-generativeai
+pinecone-client
+langchain_google_genai
+langchain_pinecone
+phidata
