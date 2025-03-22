@@ -132,7 +132,3 @@ faq-chatbot-ai-fullstack/
 
 Feel free to fork the repository and submit pull requests. For major changes, please open an issue first to discuss what you would like to change.
 
-_Note:_
-
-- Ensure that the package names (e.g., `google-generativeai`, `pinecone-client`, `phidata`) match the ones available on PyPI or your internal package names.
-- If you encounter issues with any of the packages, check the documentation or use appropriate version specifiers.
