@@ -14,6 +14,7 @@ FAQ Chatbot AI is a full-stack application that allows users to upload FAQ docum
 ## Project Structure (Only Required Files Included)
 
 ```
+faq-chatbot-ai-fullstack/
 ├── backend.py              # FastAPI backend code
 ├── app.db                  # SQLite database (generated after first run)
 ├── .env                    # Environment variables (see below)
