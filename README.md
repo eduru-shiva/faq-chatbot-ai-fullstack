@@ -133,5 +133,5 @@ Feel free to fork the repository and submit pull requests. For major changes, pl
 
 _Note:_
 
-- Ensure that the package names (e.g., `google-generativeai`, `pinecone-client`, `phi-ai`) match the ones available on PyPI or your internal package names.
+- Ensure that the package names (e.g., `google-generativeai`, `pinecone-client`, `phidata`) match the ones available on PyPI or your internal package names.
 - If you encounter issues with any of the packages, check the documentation or use appropriate version specifiers.
