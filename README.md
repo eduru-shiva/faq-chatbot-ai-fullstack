@@ -89,7 +89,7 @@ faq-chatbot-ai-fullstack/
 1. **Navigate to the React app folder:**
 
    ```bash
-   cd my-react-app
+   cd react-app
    ```
 
 2. **Install npm dependencies:**
