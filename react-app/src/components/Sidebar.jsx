@@ -48,7 +48,7 @@ const Sidebar = ({ setSelectedFile, selectedFile }) => {
       setFileData(null)
       fetchFiles()
     } catch (err) {
-      setMessage(err.response?.data.detail || 'Upload failed.')
+      setMessage(err.response?.data.detail || 'Upload failed, either the file is too large or the API key is invalid, or there is no space left in your Pinecone account.')
     } finally {
       setLoading(false)
     }
