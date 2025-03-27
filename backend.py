@@ -246,6 +246,7 @@ def handle_query(query, history, faq_context, vector_store):
 
     classification_prompt = f"""
     You are an FAQ chatbot. Analyze the provided FAQ context and the user query.
+- If the query is more like the greeting, closing, or any other general conversation like 'Hello..', 'Greetings..', etc.., respond with "Greeting".
 - If the query is not related to the topic of the FAQ context and also the history of the conversation, at all (i.e., less than 10% related), respond with "unrelated".
 - If the query is related to the FAQ context and also the history of the conversation, but the answer is not available in the FAQ context, then label it as "needs web search". If after attempting web search the answer is still not found, label it as "keep in db".        
 - If the query is answerable directly from the FAQ context, provide the answer using the context.
@@ -302,6 +303,16 @@ Output (YES or NO):
             return "This answer will be provided in the future."
         else:
             return "It is not related to the document."
+
+    elif "greeting" in classification_response:
+        greeting_prompt = f"""
+        Answer the general user query based on the conversation history, provided
+        If the conversation history is empty, provide a general response.
+        User Query: {query}
+        Chat History: {history}
+        """
+        return model.generate_content(greeting_prompt).text
+        
     elif "needs web search" in classification_response:
         modified_query = modify_query_for_web(query, summary)
         web_answer = get_web_answer(modified_query)
