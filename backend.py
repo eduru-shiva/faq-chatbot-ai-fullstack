@@ -1,5 +1,4 @@
 import inspect
-
 # Patch for Python 3.12 (Railway default) - fixes getargspec error
 if not hasattr(inspect, "getargspec"):
     inspect.getargspec = inspect.getfullargspec
@@ -510,3 +509,4 @@ def config_pinecone(pinecone_api_key: str = Form(...)):
 if __name__ == "__main__":
     import uvicorn
     uvicorn.run("main:app", host="0.0.0.0", port=8000, reload=True)
+
