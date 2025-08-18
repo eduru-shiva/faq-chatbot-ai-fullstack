@@ -1,5 +1,5 @@
 # ---------- Frontend Build ----------
-FROM node:20 AS frontend-build
+FROM node:18 AS frontend-build
 WORKDIR /frontend
 COPY react-app/package.json react-app/package-lock.json ./
 RUN npm install
@@ -10,8 +10,12 @@ RUN npm run build   # builds React -> dist/
 FROM python:3.9-slim
 WORKDIR /app
 
+# Install backend build tools
+RUN apt-get update && apt-get install -y build-essential
+
 # Install backend dependencies
 COPY requirements.txt .
+RUN pip install --upgrade pip setuptools wheel
 RUN pip install --no-cache-dir -r requirements.txt
 
 # Copy backend + frontend build
