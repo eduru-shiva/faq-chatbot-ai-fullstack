@@ -3,12 +3,16 @@ from fastapi.responses import JSONResponse
 
 app = FastAPI()
 
-# Health check route
+@app.get("/")
+async def root():
+    return {"message": "🚀 Backend is running successfully on Railway!"}
+
+# Health check
 @app.get("/api/health")
 async def health_check():
     return {"status": "ok"}
 
-# Simple chatbot route (dummy echo for now)
+# Chat API
 @app.post("/api/chat")
 async def chat(message: dict):
     user_input = message.get("text", "")
