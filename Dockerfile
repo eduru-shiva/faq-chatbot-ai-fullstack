@@ -1,5 +1,5 @@
 # ---------- Frontend Build ----------
-FROM node:16 AS frontend-build
+FROM node:20 AS frontend-build
 WORKDIR /frontend
 COPY react-app/package.json react-app/package-lock.json ./
 RUN npm install
