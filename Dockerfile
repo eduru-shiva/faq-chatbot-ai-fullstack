@@ -2,33 +2,33 @@
 FROM node:18 AS frontend-build
 WORKDIR /frontend
 
-# Copy only package files first for caching
+# Copy package files and install frontend dependencies
 COPY react-app/package.json react-app/package-lock.json ./
 RUN npm install
 
-# Copy all frontend code and build
-COPY react-app/ ./
+# Copy frontend source and build
+COPY react-app/ .
 RUN npm run build
 
 # ---------- Backend Setup ----------
 FROM python:3.9-slim
 WORKDIR /app
 
-# Install system build tools (needed for some Python packages)
-RUN apt-get update && apt-get install -y build-essential curl && rm -rf /var/lib/apt/lists/*
+# Install system build tools (required for some Python packages)
+RUN apt-get update && apt-get install -y build-essential curl
 
-# Upgrade pip & install Python dependencies
-COPY requirements.txt . 
-RUN pip install --upgrade pip setuptools wheel \
-    && pip install --no-cache-dir -r requirements.txt
+# Upgrade pip and install backend dependencies
+COPY requirements.txt .
+RUN pip install --upgrade pip setuptools wheel
+RUN pip install --no-cache-dir -r requirements.txt
 
 # Copy backend code
 COPY . .
 
-# Copy frontend build from previous stage
+# Copy frontend build into backend static folder
 COPY --from=frontend-build /frontend/dist ./frontend_dist
 
-# Expose backend port
+# Expose FastAPI port
 EXPOSE 8000
 
 # Start FastAPI server
