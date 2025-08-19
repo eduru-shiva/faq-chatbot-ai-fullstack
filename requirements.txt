@@ -10,5 +10,5 @@ google-generativeai
 pinecone-client
 langchain_google_genai
 langchain_pinecone
-phi
+phi==0.8.7
 duckduckgo-search
