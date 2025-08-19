@@ -6,7 +6,7 @@ WORKDIR /frontend
 COPY react-app/package.json react-app/package-lock.json ./
 RUN npm install
 
-# Copy frontend source and build
+# Copy frontend source and build (Vite outputs to /dist)
 COPY react-app/ . 
 RUN npm run build
 
@@ -32,11 +32,11 @@ RUN pip install --no-cache-dir -r requirements.txt
 # Copy backend code
 COPY . .
 
-# Copy frontend build into backend static folder
+# Copy Vite frontend build into backend folder
 COPY --from=frontend-build /frontend/dist ./frontend_dist
 
 # Expose FastAPI port
 EXPOSE 8000
 
-# Start FastAPI server
+# Start FastAPI server (backend.py contains app=FastAPI())
 CMD ["uvicorn", "backend:app", "--host", "0.0.0.0", "--port", "8000"]
