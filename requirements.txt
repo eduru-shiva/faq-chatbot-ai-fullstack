@@ -11,9 +11,7 @@ pinecone-client
 langchain_google_genai
 langchain_pinecone
 phidata
-
-
-
+duckduckgo-search
 
 
 
